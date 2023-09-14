@@ -1,6 +1,5 @@
 import csv
 
-
 def import_csv_data(csv_data, good_count):
     """ Функ-ция принимает csv файл с данными и преобразует в оформленный список словарей, где ключом
     будет название продукта, а значения суммой цен и их кол-вом. Good_count необходим для настройки
@@ -14,7 +13,7 @@ def import_csv_data(csv_data, good_count):
             need_key = False
             # проверка, если первая строчка с шапкой названий или неверно заполненные данные
             # больше good_count убирает маленькое кол-во продаж
-            if row[0].isdigit() and row[1].isdigit() and (int(row[1]) > good_count):
+            if row[0].isdigit() and row[1].isdigit() and (int(row[1]) >= int(good_count)):
                 if len(names_product) != 0:
                     for i in names_product:
                         for k, v in i.items():

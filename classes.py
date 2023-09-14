@@ -5,8 +5,8 @@ class Product:
         self.price = price
 
     def __repr__(self):
-        return f'продукт {self.name} будет иметь цену: {self.price}'
+        return f'продукт {self.name} : {self.price}'
 
     def __str__(self):
-        return self.name
+        return f'продукт {self.name} будет иметь цену: {self.price}'
 
