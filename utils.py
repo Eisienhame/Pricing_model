@@ -32,5 +32,13 @@ def import_csv_data(csv_data, good_count):
     return names_product
 
 
+def find_price(data):
+    clear_list = []
+    for i in data:
+        for k, v in i.items():
+            price = int(v[0]) / int(v[1])
+            clear_list.append([k, int(price)])
+
+    return clear_list
 
 
