@@ -1,6 +1,7 @@
 import csv
 from errors import InstantiateCSVError
 
+
 def import_csv_data(csv_data, good_count):
     """ Функ-ция принимает csv файл с данными и преобразует в оформленный список словарей, где ключом
     будет название продукта, а значения суммой цен и их кол-вом. Good_count необходим для настройки
@@ -8,24 +9,35 @@ def import_csv_data(csv_data, good_count):
     try:
         with open(csv_data, encoding='utf-8') as r_file:
             names_product = []
+            price_id = 0
+            count_id = 0
+            product_id = 0
             # Создаем объект reader, указываем символ-разделитель ","
             file_reader = csv.reader(r_file, delimiter=",")
             # Считывание данных из CSV файла
             for row in file_reader:
                 need_key = False
+                if len(names_product) == 0:
+                    for i in range(len(row)):
+                        if row[i] == 'price':
+                            price_id = i
+                        if row[i] == 'count':
+                            count_id = i
+                        if row[i] == 'product':
+                            product_id = i
                 # проверка, если первая строчка с шапкой названий или неверно заполненные данные
                 # больше good_count убирает маленькое кол-во продаж
-                if row[0].isdigit() and row[1].isdigit() and (int(row[1]) >= int(good_count)):
+                if row[price_id].isdigit() and row[count_id].isdigit() and (int(row[count_id]) >= int(good_count)):
                     if len(names_product) != 0:
                         for i in names_product:
                             for k, v in i.items():
                                 if k == row[4]:
-                                    v[0] = v[0] + int(row[0])
+                                    v[0] = v[0] + int(row[price_id])
                                     v[1] += 1
                                     need_key = True
 
                     if (len(names_product) == 0) or (need_key is False):
-                        data = {f'{row[4]}': [int(row[0]), 1]}
+                        data = {f'{row[product_id]}': [int(row[price_id]), 1]}
                         names_product.append(data)
 
                 else:
@@ -37,8 +49,6 @@ def import_csv_data(csv_data, good_count):
 
     except InstantiateCSVError:
         print(f"Файл поврежден")
-
-
 
 
 def find_price(data):
