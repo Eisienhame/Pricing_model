@@ -45,7 +45,7 @@ def import_csv_data(csv_data, good_count):
             return names_product
     except FileNotFoundError:
         print(f"По указанному пути файл отсутствует")
-        exit()
+
 
     except InstantiateCSVError:
         print(f"Файл поврежден")

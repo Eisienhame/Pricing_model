@@ -15,3 +15,5 @@ def test_instantiateCSVError():
 
 def test_find_price(item_test2):
     assert find_price(import_csv_data('csv_data_110.csv', 15)) == item_test2
+
+
