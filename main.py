@@ -16,6 +16,9 @@ while menu_exit:
         print('Путь неправильный')
     else:
         count_sales = input('Введите какое минимальное кол-во продаж учитывается ')
+        # Если пользователь ничего не укажет, по умолчанию будет 10
+        if count_sales.isdigit() is False:
+            count_sales = 10
         user_csv.replace("\\", "/")
         user_csv = str(Path(user_csv))
         needed_price = find_price(import_csv_data(user_csv, count_sales))
