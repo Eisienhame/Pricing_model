@@ -9,4 +9,3 @@ class Product:
 
     def __str__(self):
         return f'продукт {self.name} будет иметь цену: {self.price}'
-

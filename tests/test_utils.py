@@ -20,6 +20,7 @@ def test_find_price(item_test2, item_test):
 def test_import_csv_data(item_test):
     assert type(item_test) == type([])
 
+
 def test_class_product(item_test3):
     assert item_test3.name == 'df'
     assert item_test3.price == 15

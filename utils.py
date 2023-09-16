@@ -31,7 +31,7 @@ def import_csv_data(csv_data, good_count):
                     if len(names_product) != 0:
                         for i in names_product:
                             for k, v in i.items():
-                                if k == row[4]:
+                                if k == row[product_id]:
                                     v[0] = v[0] + int(row[price_id])
                                     v[1] += 1
                                     need_key = True
@@ -44,11 +44,10 @@ def import_csv_data(csv_data, good_count):
                     continue
             return names_product
     except FileNotFoundError:
-        print(f"По указанному пути файл отсутствует")
-
+        print("По указанному пути файл отсутствует")
 
     except InstantiateCSVError:
-        print(f"Файл поврежден")
+        print("Файл поврежден")
 
 
 def find_price(data):
@@ -59,5 +58,3 @@ def find_price(data):
             clear_list.append([k, int(price)])
 
     return clear_list
-
-
