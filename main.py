@@ -22,7 +22,6 @@ while menu_exit:
         user_csv.replace("\\", "/")
         user_csv = str(Path(user_csv))
         needed_price = find_price(import_csv_data(user_csv, count_sales))
-        print(needed_price)
         print("Вот полученные результаты:")
         for i in needed_price:
             product = Product(i[0], i[1])
