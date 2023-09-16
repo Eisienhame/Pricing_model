@@ -8,7 +8,6 @@ while menu_exit:
     print("Здравствуйте, напишите полный путь до вашего файла с данными(в формате .csv)")
     print("Для выхода из программы напишите 'exit'")
     user_csv = input()
-    print(user_csv)
     if user_csv.lower() == 'exit':
         menu_exit = False
         break
