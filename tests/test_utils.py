@@ -13,7 +13,7 @@ def test_instantiateCSVError():
     assert import_csv_data('csv_data_bad.csv', 10) == print(f"Файл поврежден")
 
 
-def test_find_price(item_test2):
-    assert find_price(import_csv_data('csv_data_110.csv', 15)) == item_test2
+def test_find_price(item_test2, item_test):
+    assert find_price(item_test) == item_test2
 
 
